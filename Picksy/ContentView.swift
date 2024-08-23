@@ -1,21 +1,21 @@
-//
-//  ContentView.swift
-//  Picksy
-//
-//  Created by Evan Best on 2024-08-22.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            // Main content
+            ExploreView()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            // TabBar overlay
+            VStack {
+                Spacer() // Pushes the TabBar to the bottom
+                TabBar()
+            }
+            .edgesIgnoringSafeArea(.bottom) // Ensures TabBar ignores safe area
         }
-        .padding()
     }
 }
 
